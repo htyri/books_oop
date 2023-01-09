@@ -4,6 +4,14 @@ const ls = new LS()
 const form = document.querySelector('#book-form')
 form.addEventListener('submit', addBook)
 
+document.addEventListener('DOMContentLoaded', getBooks)
+function getBooks(){
+    let books = ls.getBooks()
+    books.forEach(function(book){
+        ul.addBook(book)
+    })
+}
+
 function addBook(event){
     // read user inputs
     const title = ui.getInputData('#title')
