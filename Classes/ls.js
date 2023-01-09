@@ -1,12 +1,23 @@
 class LS {
     addBook(book){
-     let books // array for user inputs
-        if(localStorage.getItem('books_oop') === null){
-            books = []
+        let books = this.getData('books_oop')
+        books.push(book)
+        this.setData('books_oop', books)
+    }
+
+     getData(name){
+     let data // array for user inputs
+        if(localStorage.getItem(name) === null){
+            data = []
         } else {
-            books = JSON.parse(localStorage.getItem('books_oop'))
+            data = JSON.parse(localStorage.getItem('books_oop'))
         }
         books.push(book)
         localStorage.setItem('books_oop', JSON.stringify(books))
+         return data
+    }
+
+    setData(name, data){
+        localStorage.setItem(name, JSON.stringify(data))
     }
 }
